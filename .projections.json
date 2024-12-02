@@ -1,5 +1,10 @@
 {
   "*.py": {
-    "dispatch": "python {}.py"
+    "alternate": "{}.in",
+    "dispatch": "python {}.py < {}.in"
+  },
+  "*.in": {
+    "alternate": "{}.py",
+    "dispatch": "python {}.py < {}.in"
   }
 }
