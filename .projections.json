@@ -1,10 +1,26 @@
 {
-  "*.py": {
-    "alternate": "{}.in",
-    "dispatch": "python {}.py < {}.in"
+  "input/*.in": { "type": "input" },
+  "*/__main__.py": {
+    "type": "module",
+    "dispatch": "python {} < input/{}.in",
+    "template": [
+      "from sys import stdin",
+      "import p1, p2",
+      "",
+      "inp = []",
+      "for ln in stdin: inp.append(ln)",
+      "",
+      "print('==MODULE {}==')",
+      "print('P1:', p1.run(inp))",
+      "print('P2:', p2.run(inp))"
+    ]
   },
-  "*.in": {
-    "alternate": "{}.py",
-    "dispatch": "python {}.py < {}.in"
+  "**/p*.py": {
+    "type": "part",
+    "dispatch": "python {dirname} < input/{dirname}.in",
+    "template": [
+      "def run() -> int:",
+      "    return -1"
+    ]
   }
 }
