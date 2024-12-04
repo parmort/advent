@@ -19,7 +19,9 @@
     "type": "part",
     "dispatch": "python {dirname} < input/{dirname}.in",
     "template": [
-      "def run() -> int:",
+      "from typing import List",
+      "",
+      "def run(lines: List[str]) -> int:",
       "    return -1"
     ]
   }
